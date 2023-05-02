@@ -4,7 +4,7 @@
 }
 
 /* Reset Styles */
-h1 {
+.text-orange {
   color: var(--first-color);
 }
 
