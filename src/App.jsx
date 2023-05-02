@@ -10,6 +10,7 @@ function App() {
         <section>Texto</section>
         <section>Calculadora</section>
       </article>
+      <div>Footer</div>
     </div>
   );
 }
