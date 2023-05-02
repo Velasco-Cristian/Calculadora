@@ -1,0 +1,11 @@
+/* Custom properties */
+:root {
+  --first-color: rgb(255, 160, 0);
+}
+
+/* Reset Styles */
+h1 {
+  color: var(--first-color);
+}
+
+/* Bootstrap Styles */
