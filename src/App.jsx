@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
 
 function App() {
@@ -32,7 +33,22 @@ function App() {
             <p>Derechos reservados &copy; 2023 - Calculadora</p>
             <p>Hecho por: Velasco Cristian</p>
           </article>
-          <article className="col-6 text-start">Redes</article>
+          <article className="col-6 text-start">
+            <a
+              href="https://www.linkedin.com/in/velasco-cristian-nicolas/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="bi bi-linkedin text-orange fs-1 mx-4"></i>
+            </a>
+            <a
+              href="https://github.com/Velasco-Cristian"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="bi bi-github text-orange fs-1"></i>
+            </a>
+          </article>
         </div>
       </footer>
     </div>
