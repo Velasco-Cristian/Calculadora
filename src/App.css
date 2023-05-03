@@ -5,6 +5,9 @@
 }
 
 /* Reset Styles */
+main {
+  padding-bottom: 75px;
+}
 
 .text-orange {
   color: var(--first-color);
@@ -25,14 +28,5 @@
 footer {
   margin-bottom: -0.75rem;
 }
-/* MD */
-/* Small devices (landscape phones, 576px and up) */
-/*@media (min-width: 500px) {
-  body {
-    max-width: 90%;
-  }
 
-  section {
-    margin: 2rem;
-  }
-}*/
+/* MD */

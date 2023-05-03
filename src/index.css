@@ -10,5 +10,5 @@ html {
 
 body {
   background-image: url("/background-home.jpg");
-  background-size: 100% 100%;
+  background-size: cover;
 }

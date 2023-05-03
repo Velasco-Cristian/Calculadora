@@ -6,37 +6,39 @@ import Calculator from "./components/calculator";
 
 function App() {
   return (
-    <div className="container-fluid vh-100">
+    <div className="container-fluid">
       <header>
         <h1 className="text-center py-xl-5 py-3 text-orange">Calculadora</h1>
       </header>
       <main className="">
-        <article className="row flex-column-reverse flex-lg-row d-flex justify-content-center ">
-          <section className="col-lg-5 col-sm-8 col-10 mx-auto text-bg-dark rounded-4 rounded-bottom  ">
+        <article className="row flex-column-reverse flex-lg-row d-flex justify-content-center">
+          <section className="col-lg-5 col-10 mx-auto text-bg-dark rounded-4 rounded-bottom  ">
             <img
               src="/public/using-a-calculator.jpg"
               className="img-fluid pt-4 pb-2 d-none d-lg-block"
               alt="Using a calculator"
             />
-            <p className="text-orange my-sm-4 my-lg-1">
+            <p className="text-orange my-sm-4 my-lg-1 pt-2 px-3 pb-lg-2 pt-lg-0">
               Una calculadora gratis y simple, permite realizar operaciones
               matemáticas. Puede ser utilizada en cualquier dispositivo con
               acceso a Internet, con ella puedes realizar funciones como suma,
               resta, multiplicación, división.
             </p>
           </section>
-          <section className="col-10 mx-auto col-lg-5  mb-sm-5 border">
+          <section className="col-10 mx-auto col-lg-5 mb-sm-5 border mb-5">
             <Calculator></Calculator>
           </section>
         </article>
       </main>
       <footer className="bg-dark text-center fixed-bottom py-1 text-orange">
         <div className="row">
-          <article className="col-6 text-end">
-            <p>Derechos reservados &copy; 2023 - Calculadora</p>
-            <p>Hecho por: Velasco Cristian</p>
+          <article className="col-8 col-lg-7 col-xxl-6 text-end">
+            <p className="fs-6">
+              Derechos reservados &copy; 2023 - Calculadora
+            </p>
+            <p className="fs-6">Hecho por: Velasco Cristian</p>
           </article>
-          <article className="col-6 text-start">
+          <article className="col-4  text-start mt-2">
             <a
               href="https://www.linkedin.com/in/velasco-cristian-nicolas/"
               target="_blank"
