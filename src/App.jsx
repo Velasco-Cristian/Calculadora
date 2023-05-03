@@ -2,32 +2,35 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
+import Calculator from "./components/calculator";
 
 function App() {
   return (
     <div className="container-fluid vh-100">
       <header>
-        <h1 className="text-center py-5 text-orange">Calculadora</h1>
+        <h1 className="text-center py-xl-5 py-3 text-orange">Calculadora</h1>
       </header>
-      <main className="container-xxl">
-        <article className="row">
-          <section className="col text-bg-dark rounded-5 rounded-bottom">
+      <main className="">
+        <article className="row flex-column-reverse flex-lg-row d-flex justify-content-center ">
+          <section className="col-lg-5 col-sm-8 col-10 mx-auto text-bg-dark rounded-4 rounded-bottom  ">
             <img
               src="/public/using-a-calculator.jpg"
-              className="img-fluid p-3"
+              className="img-fluid pt-4 pb-2 d-none d-lg-block"
               alt="Using a calculator"
             />
-            <p className="text-orange">
+            <p className="text-orange my-sm-4 my-lg-1">
               Una calculadora gratis y simple, permite realizar operaciones
               matemáticas. Puede ser utilizada en cualquier dispositivo con
               acceso a Internet, con ella puedes realizar funciones como suma,
               resta, multiplicación, división.
             </p>
           </section>
-          <section className="col">Calculadora</section>
+          <section className="col-10 mx-auto col-lg-5  mb-sm-5 border">
+            <Calculator></Calculator>
+          </section>
         </article>
       </main>
-      <footer className="bg-dark text-center fixed-bottom p-1 text-orange">
+      <footer className="bg-dark text-center fixed-bottom py-1 text-orange">
         <div className="row">
           <article className="col-6 text-end">
             <p>Derechos reservados &copy; 2023 - Calculadora</p>
@@ -39,14 +42,14 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="bi bi-linkedin text-orange fs-1 mx-4"></i>
+              <i className="bi bi-linkedin text-orange fs-1 mx-4 link"></i>
             </a>
             <a
               href="https://github.com/Velasco-Cristian"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="bi bi-github text-orange fs-1"></i>
+              <i className="bi bi-github text-orange fs-1 link"></i>
             </a>
           </article>
         </div>

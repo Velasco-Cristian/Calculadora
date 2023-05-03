@@ -1,11 +1,38 @@
 /* Custom properties */
 :root {
   --first-color: rgb(255, 160, 0);
+  --second-color: rgb(251, 252, 169);
 }
 
 /* Reset Styles */
+
 .text-orange {
   color: var(--first-color);
 }
 
-/* Bootstrap Styles */
+.link {
+  transition: 0.5s ease-out;
+  -webkit-transition: 0.5s ease-out;
+  -moz-transition: 0.5s ease-out;
+  -ms-transition: 0.5s ease-out;
+  -o-transition: 0.5s ease-out;
+}
+
+.link:hover {
+  color: var(--second-color); /* color de fondo al pasar el mouse */
+}
+
+footer {
+  margin-bottom: -0.75rem;
+}
+/* MD */
+/* Small devices (landscape phones, 576px and up) */
+/*@media (min-width: 500px) {
+  body {
+    max-width: 90%;
+  }
+
+  section {
+    margin: 2rem;
+  }
+}*/
