@@ -6,7 +6,22 @@
 
 /* Reset Styles */
 main {
-  padding-bottom: 75px;
+  padding-bottom: 115px;
+}
+
+.BodyCalculator {
+  background-color: bisque;
+}
+
+.btnCalculator {
+  height: 3.25rem;
+  margin-left: 5px;
+  width: 5rem;
+}
+
+.calculatorImg {
+  max-width: 1.5rem;
+  max-height: 1.5rem;
 }
 
 .text-orange {
@@ -30,3 +45,43 @@ footer {
 }
 
 /* MD */
+/* Extra small devices (phones, 600px and down) */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .btnCalculator {
+    height: 3rem;
+    width: 6rem;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .btnCalculator {
+    height: 3.75rem;
+    width: 5rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .btnCalculator {
+    height: 4rem;
+    width: 5rem;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .btnCalculator {
+    height: 4rem;
+    width: 6.5rem;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .btnCalculator {
+    height: 4.5rem;
+    width: 7.25rem;
+  }
+}
