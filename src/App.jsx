@@ -12,17 +12,18 @@ function App() {
       </header>
       <main className="">
         <article className="row flex-column-reverse flex-lg-row d-flex justify-content-center">
-          <section className="col-lg-5 col-10 mx-auto text-bg-dark rounded-4 rounded-bottom  ">
+          <section className="col-lg-5 col-10 mx-auto text-bg-dark rounded-4 rounded-bottom aboutText">
             <img
               src="/public/using-a-calculator.jpg"
-              className="img-fluid pt-4 pb-2 d-none d-lg-block"
+              className="img-fluid pt-4 pb-2 d-none d-lg-block px-xl-4 image"
               alt="Using a calculator"
             />
-            <p className="text-orange my-sm-4 my-lg-1 pt-2 px-3 pb-lg-2 pt-lg-0">
-              Una calculadora gratis y simple, permite realizar operaciones
-              matemáticas. Puede ser utilizada en cualquier dispositivo con
-              acceso a Internet, con ella puedes realizar funciones como suma,
-              resta, multiplicación, división.
+            <p className="text-orange my-sm-4 my-lg-1 pt-2 px-3">
+              La calculadora es una herramienta fundamental para cualquier
+              persona que necesite realizar operaciones matemáticas en su día a
+              día, permite realizar operaciones matemáticas. Puede ser utilizada
+              en cualquier dispositivo con acceso a Internet, con ella puedes
+              realizar funciones como suma, resta, multiplicación, división.
             </p>
           </section>
           <section className="col-10 mx-auto col-lg-5 mb-sm-5 border mb-5">

@@ -4,7 +4,7 @@ export default function Calculator() {
   const [value, setValue] = useState(0);
   return (
     <>
-      <div className="BodyCalculator container">
+      <div className="BodyCalculator container ">
         <div className="d-flex align-items-center">
           <img
             className="calculatorImg"
@@ -18,43 +18,54 @@ export default function Calculator() {
             <i className="bi bi-x-lg me-1"></i>
           </div>
         </div>
-        <input type="number" className="col-12" />
+        <input
+          type="number"
+          className="col-12 fs-5 text-end border border-0 text-muted"
+          disabled
+        />
+        <input
+          type="number"
+          className="col-12 fs-3 text-end border border-0"
+          inputMode="numeric"
+        />
         <div>
-          <div className="row my-1 mx-1 justify-content-evenly">
-            <button className="col-2  rounded btnCalculator">%</button>
+          <div className="row my-1 mx-1 pt-2 justify-content-evenly fs-5">
+            <button className="col-2 rounded btnCalculator">%</button>
             <button className="col-2 rounded btnCalculator">CE</button>
             <button className="col-2 rounded btnCalculator">C</button>
-            <button className="col-2 rounded btnCalculator">borrar</button>
+            <button className="col-2 rounded btnCalculator">
+              <i className="bi bi-backspace"></i>
+            </button>
           </div>
-          <div className="row">
-            <button className="col-3">1/x</button>
-            <button className="col-3">x^2</button>
-            <button className="col-3">raiz</button>
-            <button className="col-3">/</button>
+          <div className="row my-1 mx-1 justify-content-evenly fs-5">
+            <button className="col-2 rounded btnCalculator">1/x</button>
+            <button className="col-2 rounded btnCalculator">x^2</button>
+            <button className="col-2 rounded btnCalculator">raiz</button>
+            <button className="col-2 rounded btnCalculator">/</button>
           </div>
-          <div className="row">
-            <button className="col-3">7</button>
-            <button className="col-3">8</button>
-            <button className="col-3">9</button>
-            <button className="col-3">X</button>
+          <div className="row my-1 mx-1 justify-content-evenly fs-5">
+            <button className="col-2 rounded btnCalculator">7</button>
+            <button className="col-2 rounded btnCalculator">8</button>
+            <button className="col-2 rounded btnCalculator">9</button>
+            <button className="col-2 rounded btnCalculator">X</button>
           </div>
-          <div className="row">
-            <button className="col-3">4</button>
-            <button className="col-3">5</button>
-            <button className="col-3">6</button>
-            <button className="col-3">-</button>
+          <div className="row my-1 mx-1 justify-content-evenly fs-5">
+            <button className="col-2 rounded btnCalculator">4</button>
+            <button className="col-2 rounded btnCalculator">5</button>
+            <button className="col-2 rounded btnCalculator">6</button>
+            <button className="col-2 rounded btnCalculator">-</button>
           </div>
-          <div className="row">
-            <button className="col-3">1</button>
-            <button className="col-3">2</button>
-            <button className="col-3">3</button>
-            <button className="col-3">+</button>
+          <div className="row my-1 mx-1 justify-content-evenly fs-5">
+            <button className="col-2 rounded btnCalculator">1</button>
+            <button className="col-2 rounded btnCalculator">2</button>
+            <button className="col-2 rounded btnCalculator">3</button>
+            <button className="col-2 rounded btnCalculator">+</button>
           </div>
-          <div className="row">
-            <button className="col-3">+/-</button>
-            <button className="col-3">0</button>
-            <button className="col-3">,</button>
-            <button className="col-3">=</button>
+          <div className="row my-1 pb-3 mx-1 justify-content-evenly fs-5">
+            <button className="col-2 rounded btnCalculator">+/-</button>
+            <button className="col-2 rounded btnCalculator">0</button>
+            <button className="col-2 rounded btnCalculator">,</button>
+            <button className="col-2 rounded btnCalculator btnEquals">=</button>
           </div>
         </div>
       </div>
