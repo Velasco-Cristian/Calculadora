@@ -1,41 +1,65 @@
 import React, { useState, useEffect } from "react";
 
 export default function Calculator() {
-  const [currentValue, setCurrentValue] = useState("0");
-  const [firstValue, setFirstValue] = useState(0);
-  const [IsOperating, setIsOperating] = useState(false);
-  const [secondViewValue, setSecondViewValue] = useState("");
+  const [currentValue, setCurrentValue] = useState("0"); //Muestra el valor del input
+  const [firstValue, setFirstValue] = useState(0); //Almacena el valor del primer término
+  const [secondValue, setSecondValue] = useState(0); //Almacena el valor del segundo término
+  const [isOperating, setIsOperating] = useState(false); //Para saber cuando se presiona un operador
+  const [secondViewValue, setSecondViewValue] = useState(""); //El input más chico donde muestra el resultado anterior
 
+  // Actualizamos el valor del primer número cada vez que cambia el valor actual
+  useEffect(() => {
+    if (!isOperating) {
+      setFirstValue(parseFloat(currentValue));
+    }
+  }, [currentValue, isOperating]);
+
+  //Mostramos cada boton que el usuario vaya ingresando
   const handleInputChange = (e) => {
     setCurrentValue(e.target.value.toString());
   };
 
+  //Manejamos los casos donde se introduce un numero distinto de cero siendo cero ya el valor actual
+  //Además limpiamos el input cuando se pulsa un operador y se ingresa otro numero
   const handleNumberClick = (e) => {
     const number = e.target.value.toString();
     if (number === "0" && currentValue === "0") {
       return;
-    } else if (currentValue === "0" || IsOperating === true) {
+    } else if (currentValue === "0" || isOperating) {
       setCurrentValue(number);
       setIsOperating(false);
     } else {
       setCurrentValue(currentValue + number);
     }
+    if (isOperating) {
+      setSecondValue(parseFloat(currentValue));
+      setIsOperating(false);
+    }
   };
 
+  //Reseteamos los valores al precionar "C"
   const resetNumber = () => {
     setCurrentValue("0");
     setFirstValue(0);
+    setSecondValue(0);
+    setSecondViewValue("");
   };
 
+  //Manejamos los operadores para cada caso
   const handleOperatorClick = (operator) => {
     switch (operator) {
       case "+":
-        console.log("el current values es: " + currentValue);
-        setFirstValue(parseFloat(currentValue));
-        console.log(typeof firstValue);
-        console.log(firstValue);
+        //Activamos el operador
         setIsOperating(true);
-        setSecondViewValue(currentValue + " " + operator);
+        //Mientras no sea cero lo vamos 'imprimiendo' en el input chico
+        setSecondViewValue(
+          firstValue + secondValue !== 0 ? firstValue + secondValue : ""
+        );
+        //Para cuando uso el operando 'más' luego de otro operando más
+        //me actualice también la vista del currentValue
+        setCurrentValue(
+          firstValue + secondValue !== 0 ? firstValue + secondValue : ""
+        );
         break;
       case "-":
         //
@@ -62,8 +86,8 @@ export default function Calculator() {
 
   return (
     <>
-      <div className="BodyCalculator container ">
-        <div className="d-flex align-items-center">
+      <div className="BodyCalculator container rounded-2">
+        <div className="d-flex align-items-center pt-2">
           <img className="calculatorImg" src="/favicon.ico" alt="calculator" />
           <sub className="fs-6 ms-2">Calculadora</sub>
           <div className="ms-auto">
@@ -88,7 +112,12 @@ export default function Calculator() {
         <div>
           <div className="row my-1 mx-1 pt-2 justify-content-evenly fs-5">
             <button className="col-2 rounded btnCalculator">%</button>
-            <button className="col-2 rounded btnCalculator">CE</button>
+            <button
+              className="col-2 rounded btnCalculator"
+              onClick={resetNumber}
+            >
+              CE
+            </button>
             <button
               className="col-2 rounded btnCalculator"
               onClick={resetNumber}
@@ -111,21 +140,21 @@ export default function Calculator() {
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleNumberClick}
-              value={7}
+              value={"7"}
             >
               7
             </button>
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleNumberClick}
-              value={8}
+              value={"8"}
             >
               8
             </button>
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleNumberClick}
-              value={9}
+              value={"9"}
             >
               9
             </button>
@@ -137,21 +166,21 @@ export default function Calculator() {
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleNumberClick}
-              value={4}
+              value={"4"}
             >
               4
             </button>
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleNumberClick}
-              value={5}
+              value={"5"}
             >
               5
             </button>
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleNumberClick}
-              value={6}
+              value={"6"}
             >
               6
             </button>
@@ -177,7 +206,7 @@ export default function Calculator() {
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleNumberClick}
-              value={3}
+              value={"3"}
             >
               3
             </button>

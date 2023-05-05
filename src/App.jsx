@@ -26,7 +26,7 @@ function App() {
               realizar funciones como suma, resta, multiplicación, división.
             </p>
           </section>
-          <section className="col-10 mx-auto col-lg-5 mb-sm-5 border mb-5">
+          <section className="col-10 mx-auto col-lg-5 mb-sm-5 mb-5">
             <Calculator></Calculator>
           </section>
         </article>
