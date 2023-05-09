@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./App.css";
@@ -34,12 +33,12 @@ function App() {
       <footer className="bg-dark text-center fixed-bottom py-1 text-orange">
         <div className="row">
           <article className="col-8 col-lg-7 col-xxl-6 text-end">
-            <p className="fs-6">
+            <p className="fs-6 ">
               Derechos reservados &copy; 2023 - Calculadora
             </p>
-            <p className="fs-6">Hecho por: Velasco Cristian</p>
+            <p className="fs-6 mt-n1">Hecho por: Velasco Cristian</p>
           </article>
-          <article className="col-4  text-start mt-2">
+          <article className="col-4  text-start mt-n2">
             <a
               href="https://www.linkedin.com/in/velasco-cristian-nicolas/"
               target="_blank"

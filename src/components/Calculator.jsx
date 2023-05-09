@@ -1,87 +1,44 @@
 import React, { useState, useEffect } from "react";
 
 export default function Calculator() {
-  const [currentValue, setCurrentValue] = useState("0"); //Muestra el valor del input
-  const [firstValue, setFirstValue] = useState(0); //Almacena el valor del primer término
-  const [secondValue, setSecondValue] = useState(0); //Almacena el valor del segundo término
-  const [isOperating, setIsOperating] = useState(false); //Para saber cuando se presiona un operador
-  const [secondViewValue, setSecondViewValue] = useState(""); //El input más chico donde muestra el resultado anterior
+  const [firstView, setFirstView] = useState("0");
+  const [secondView, setSecondView] = useState("");
+  const [secondValue, setSecondValue] = useState(0);
+  const [operatorPressed, setOperatorPressed] = useState(false);
 
-  // Actualizamos el valor del primer número cada vez que cambia el valor actual
-  useEffect(() => {
-    if (!isOperating) {
-      setFirstValue(parseFloat(currentValue));
-    }
-  }, [currentValue, isOperating]);
-
-  //Mostramos cada boton que el usuario vaya ingresando
-  const handleInputChange = (e) => {
-    setCurrentValue(e.target.value.toString());
-  };
-
-  //Manejamos los casos donde se introduce un numero distinto de cero siendo cero ya el valor actual
-  //Además limpiamos el input cuando se pulsa un operador y se ingresa otro numero
   const handleNumberClick = (e) => {
-    const number = e.target.value.toString();
-    if (number === "0" && currentValue === "0") {
-      return;
-    } else if (currentValue === "0" || isOperating) {
-      setCurrentValue(number);
-      setIsOperating(false);
+    let number = e.target.value.toString();
+    if (operatorPressed) {
+      setFirstView(number);
+      setOperatorPressed(false);
     } else {
-      setCurrentValue(currentValue + number);
-    }
-    if (isOperating) {
-      setSecondValue(parseFloat(currentValue));
-      setIsOperating(false);
+      setFirstView(firstView === "0" ? number : firstView + number);
     }
   };
 
-  //Reseteamos los valores al precionar "C"
-  const resetNumber = () => {
-    setCurrentValue("0");
-    setFirstValue(0);
-    setSecondValue(0);
-    setSecondViewValue("");
-  };
-
-  //Manejamos los operadores para cada caso
-  const handleOperatorClick = (operator) => {
-    switch (operator) {
+  const handleOperatorClick = (op) => {
+    switch (op) {
       case "+":
-        //Activamos el operador
-        setIsOperating(true);
-        //Mientras no sea cero lo vamos 'imprimiendo' en el input chico
-        setSecondViewValue(
-          firstValue + secondValue !== 0 ? firstValue + secondValue : ""
-        );
-        //Para cuando uso el operando 'más' luego de otro operando más
-        //me actualice también la vista del currentValue
-        setCurrentValue(
-          firstValue + secondValue !== 0 ? firstValue + secondValue : ""
-        );
-        break;
-      case "-":
-        //
-        break;
-      case "*":
-        //
-        break;
-      case "/":
-        //
-        break;
-      case "squareRoot":
-        //
-        break;
-      case "powers":
-        //;
-        break;
-      case "inverseFunction":
-        //;
+        if (firstView !== "0") {
+          let tempOperator = "+";
+          if (secondView.includes("+")) {
+            tempOperator = "+";
+          }
+          if (secondView !== "") {
+            let result = eval(`${secondValue} ${tempOperator} ${firstView}`);
+            setSecondView(`${result} +`);
+            setSecondValue(result);
+            setFirstView(result.toString());
+          } else {
+            setSecondView(`${firstView} +`);
+            setSecondValue(parseFloat(firstView));
+          }
+        }
         break;
       default:
         console.log("Wrong operator");
     }
+    setOperatorPressed(true);
   };
 
   return (
@@ -99,28 +56,28 @@ export default function Calculator() {
         <input
           type="text"
           className="col-12 fs-5 text-end border border-0 text-muted pe-4"
-          value={secondViewValue}
+          value={secondView}
           disabled
         />
         <input
           type="text"
           className="col-12 fs-3 text-end border border-0 pe-4"
           inputMode="numeric"
-          onChange={handleInputChange}
-          value={currentValue}
+          onChange={(e) => setFirstView(e.target.value)}
+          value={firstView}
         />
         <div>
           <div className="row my-1 mx-1 pt-2 justify-content-evenly fs-5">
             <button className="col-2 rounded btnCalculator">%</button>
             <button
               className="col-2 rounded btnCalculator"
-              onClick={resetNumber}
+              //onClick={resetNumber}
             >
               CE
             </button>
             <button
               className="col-2 rounded btnCalculator"
-              onClick={resetNumber}
+              //onClick={resetNumber}
             >
               C
             </button>
@@ -184,7 +141,10 @@ export default function Calculator() {
             >
               6
             </button>
-            <button className="col-2 rounded btnCalculator fs1">
+            <button
+              className="col-2 rounded btnCalculator fs1"
+              //onClick={() => handleOperatorClick("-")}
+            >
               <i className="bi bi-dash-lg"></i>
             </button>
           </div>
