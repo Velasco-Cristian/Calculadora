@@ -54,9 +54,11 @@ export default function Calculator() {
         break;
       case "=":
         if (secondView !== "" && firstView !== "") {
-          let tempOperator = secondView.slice(-1);
-          let result = eval(`${secondValue} ${tempOperator} ${firstView}`);
-          setSecondView("");
+          let result = eval(
+            `${secondValue} ${secondView.slice(-1)} ${firstView}`
+          );
+          let process = `${secondValue} ${secondView.slice(-1)} ${firstView} =`;
+          setSecondView(process);
           setFirstView(result.toString());
         }
         break;
