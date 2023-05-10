@@ -52,6 +52,23 @@ export default function Calculator() {
           }
         }
         break;
+      case "*":
+        if (firstView !== "0") {
+          let tempOperator = "*";
+          if (secondView.includes("*")) {
+            tempOperator = "*";
+          }
+          if (secondView !== "") {
+            let result = eval(`${secondValue} ${tempOperator} ${firstView}`);
+            setSecondView(`${result} *`);
+            setSecondValue(result);
+            setFirstView(result.toString());
+          } else {
+            setSecondView(`${firstView} *`);
+            setSecondValue(parseFloat(firstView));
+          }
+        }
+        break;
       case "=":
         if (secondView !== "" && firstView !== "") {
           let result = eval(
@@ -142,7 +159,10 @@ export default function Calculator() {
             >
               9
             </button>
-            <button className="col-2 rounded btnCalculator">
+            <button
+              className="col-2 rounded btnCalculator"
+              onClick={() => handleOperatorClick("*")}
+            >
               <i className="bi bi-x-lg"></i>
             </button>
           </div>
