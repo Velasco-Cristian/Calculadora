@@ -21,6 +21,12 @@ export default function Calculator() {
     }
   };
 
+  const handleDecimalClick = () => {
+    if (!firstView.includes(".")) {
+      setFirstView(firstView + ".");
+    }
+  };
+
   const handleReset = () => {
     setFirstView("0");
     setSecondView("");
@@ -325,7 +331,13 @@ export default function Calculator() {
             >
               0
             </button>
-            <button className="col-2 rounded btnCalculator">,</button>
+            <button
+              className="col-2 rounded btnCalculator"
+              value="."
+              onClick={handleDecimalClick}
+            >
+              ,
+            </button>
             <button
               className="col-2 rounded btnCalculator btnEquals fs-3"
               onClick={() => handleOperatorClick("=")}
