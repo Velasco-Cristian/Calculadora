@@ -105,6 +105,12 @@ export default function Calculator() {
           }
         }
         break;
+      case "%":
+        if (firstView !== "0") {
+          let result = parseFloat(firstView) / 100;
+          setFirstView(result.toString());
+        }
+        break;
       case "=":
         if (secondView !== "" && firstView !== "") {
           let tempOperator = "";
@@ -116,6 +122,8 @@ export default function Calculator() {
             tempOperator = "*";
           } else if (secondView.includes("/")) {
             tempOperator = "/";
+          } else if (secondView.includes("%")) {
+            tempOperator = "*";
           }
 
           if (tempOperator !== "") {
@@ -163,7 +171,12 @@ export default function Calculator() {
         />
         <div>
           <div className="row my-1 mx-1 pt-2 justify-content-evenly fs-5">
-            <button className="col-2 rounded btnCalculator">%</button>
+            <button
+              className="col-2 rounded btnCalculator"
+              onClick={() => handleOperatorClick("%")}
+            >
+              %
+            </button>
             <button
               className="col-2 rounded btnCalculator"
               onClick={handleReset}
