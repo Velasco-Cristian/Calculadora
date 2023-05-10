@@ -28,6 +28,14 @@ export default function Calculator() {
     setOperatorPressed(false);
   };
 
+  const handleDelete = () => {
+    if (firstView.length === 1) {
+      setFirstView("0");
+    } else {
+      setFirstView(firstView.slice(0, -1));
+    }
+  };
+
   const handleOperatorClick = (op) => {
     switch (op) {
       case "+":
@@ -135,7 +143,13 @@ export default function Calculator() {
               `${Number(secondValue)} ${tempOperator} ${Number(firstView)}`
             );
 
-            setSecondView(`${secondView} ${firstView} =`);
+            // Verificar si el último carácter de secondView ya es un igual
+            if (secondView.slice(-1) === "=") {
+              setSecondView(`${result} ${tempOperator}`);
+            } else {
+              setSecondView(`${secondView} ${firstView} =`);
+            }
+
             setFirstView(result.toString());
             setSecondValue(0);
             setOperatorPressed(false);
@@ -193,7 +207,10 @@ export default function Calculator() {
             >
               C
             </button>
-            <button className="col-2 rounded btnCalculator">
+            <button
+              className="col-2 rounded btnCalculator"
+              onClick={handleDelete}
+            >
               <i className="bi bi-backspace"></i>
             </button>
           </div>
