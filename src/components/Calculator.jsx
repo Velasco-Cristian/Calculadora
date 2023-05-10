@@ -27,6 +27,14 @@ export default function Calculator() {
     }
   };
 
+  const handleSignChange = () => {
+    setFirstView((prevView) => {
+      const currentValue = parseFloat(prevView);
+      const newValue = -currentValue;
+      return newValue.toString();
+    });
+  };
+
   const handleReset = () => {
     setFirstView("0");
     setSecondView("");
@@ -321,7 +329,10 @@ export default function Calculator() {
             </button>
           </div>
           <div className="row my-1 pb-3 mx-1 justify-content-evenly fs-5">
-            <button className="col-2 rounded btnCalculator">
+            <button
+              className="col-2 rounded btnCalculator"
+              onClick={handleSignChange}
+            >
               <i className="bi bi-plus-slash-minus"></i>
             </button>
             <button
