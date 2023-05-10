@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { evaluate } from "mathjs";
 
 export default function Calculator() {
   const [firstView, setFirstView] = useState("0");
@@ -25,7 +26,9 @@ export default function Calculator() {
             tempOperator = "+";
           }
           if (secondView !== "") {
-            let result = eval(`${secondValue} ${tempOperator} ${firstView}`);
+            let result = evaluate(
+              `${secondValue} ${tempOperator} ${firstView}`
+            );
             setSecondView(`${result} +`);
             setSecondValue(result);
             setFirstView(result.toString());
@@ -69,14 +72,55 @@ export default function Calculator() {
           }
         }
         break;
+      case "/":
+        if (firstView !== "0") {
+          let tempOperator = "/";
+          if (secondView.includes("+")) {
+            tempOperator = "+";
+          } else if (secondView.includes("-")) {
+            tempOperator = "-";
+          } else if (secondView.includes("*")) {
+            tempOperator = "*";
+          }
+          if (secondView !== "" && secondValue !== 0) {
+            let result = evaluate(
+              `${secondValue} ${tempOperator} ${firstView}`
+            );
+            setSecondView(`${result} /`);
+            setSecondValue(result);
+          } else {
+            if (operatorPressed && secondView.slice(-1) === "/") {
+              setSecondView(`${secondValue} /`);
+            } else {
+              setSecondView(`${firstView} /`);
+              setSecondValue(parseFloat(firstView));
+            }
+          }
+        }
+        break;
       case "=":
         if (secondView !== "" && firstView !== "") {
-          let result = eval(
-            `${secondValue} ${secondView.slice(-1)} ${firstView}`
-          );
-          let process = `${secondValue} ${secondView.slice(-1)} ${firstView} =`;
-          setSecondView(process);
-          setFirstView(result.toString());
+          let tempOperator = "";
+          if (secondView.includes("+")) {
+            tempOperator = "+";
+          } else if (secondView.includes("-")) {
+            tempOperator = "-";
+          } else if (secondView.includes("*")) {
+            tempOperator = "*";
+          } else if (secondView.includes("/")) {
+            tempOperator = "/";
+          }
+
+          if (tempOperator !== "") {
+            let result = evaluate(
+              `${Number(secondValue)} ${tempOperator} ${Number(firstView)}`
+            );
+
+            setSecondView(`${secondView} ${firstView} =`);
+            setFirstView(result.toString());
+            setSecondValue(0);
+            setOperatorPressed(false);
+          }
         }
         break;
       default:
@@ -135,7 +179,12 @@ export default function Calculator() {
               x<sup>2</sup>
             </button>
             <button className="col-2 rounded btnCalculator">√x</button>
-            <button className="col-2 rounded btnCalculator fs-2">÷</button>
+            <button
+              className="col-2 rounded btnCalculator fs-2"
+              onClick={() => handleOperatorClick("/")}
+            >
+              ÷
+            </button>
           </div>
           <div className="row my-1 mx-1 justify-content-evenly fs-5">
             <button
