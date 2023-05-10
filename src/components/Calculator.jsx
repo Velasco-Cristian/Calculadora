@@ -17,6 +17,13 @@ export default function Calculator() {
     }
   };
 
+  const handleReset = () => {
+    setFirstView("0");
+    setSecondView("");
+    setSecondValue(0);
+    setOperatorPressed(false);
+  };
+
   const handleOperatorClick = (op) => {
     switch (op) {
       case "+":
@@ -159,13 +166,13 @@ export default function Calculator() {
             <button className="col-2 rounded btnCalculator">%</button>
             <button
               className="col-2 rounded btnCalculator"
-              //onClick={resetNumber}
+              onClick={handleReset}
             >
               CE
             </button>
             <button
               className="col-2 rounded btnCalculator"
-              //onClick={resetNumber}
+              onClick={handleReset}
             >
               C
             </button>
