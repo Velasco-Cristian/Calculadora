@@ -7,6 +7,10 @@ export default function Calculator() {
   const [secondValue, setSecondValue] = useState(0);
   const [operatorPressed, setOperatorPressed] = useState(false);
 
+  const formatNumber = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
   const handleNumberClick = (e) => {
     let number = e.target.value.toString();
     if (operatorPressed) {
@@ -167,7 +171,7 @@ export default function Calculator() {
           className="col-12 fs-3 text-end border border-0 pe-4"
           inputMode="numeric"
           onChange={(e) => setFirstView(e.target.value)}
-          value={firstView}
+          value={formatNumber(firstView)}
         />
         <div>
           <div className="row my-1 mx-1 pt-2 justify-content-evenly fs-5">
