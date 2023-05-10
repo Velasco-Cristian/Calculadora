@@ -35,6 +35,31 @@ export default function Calculator() {
           }
         }
         break;
+      case "-":
+        if (firstView !== "0") {
+          let tempOperator = "-";
+          if (secondView.includes("-")) {
+            tempOperator = "-";
+          }
+          if (secondView !== "") {
+            let result = eval(`${secondValue} ${tempOperator} ${firstView}`);
+            setSecondView(`${result} -`);
+            setSecondValue(result);
+            setFirstView(result.toString());
+          } else {
+            setSecondView(`${firstView} -`);
+            setSecondValue(parseFloat(firstView));
+          }
+        }
+        break;
+      case "=":
+        if (secondView !== "" && firstView !== "") {
+          let tempOperator = secondView.slice(-1);
+          let result = eval(`${secondValue} ${tempOperator} ${firstView}`);
+          setSecondView("");
+          setFirstView(result.toString());
+        }
+        break;
       default:
         console.log("Wrong operator");
     }
@@ -143,7 +168,7 @@ export default function Calculator() {
             </button>
             <button
               className="col-2 rounded btnCalculator fs1"
-              //onClick={() => handleOperatorClick("-")}
+              onClick={() => handleOperatorClick("-")}
             >
               <i className="bi bi-dash-lg"></i>
             </button>
@@ -191,7 +216,7 @@ export default function Calculator() {
             <button className="col-2 rounded btnCalculator">,</button>
             <button
               className="col-2 rounded btnCalculator btnEquals fs-3"
-              //onClick={handleEqualsClick}
+              onClick={() => handleOperatorClick("=")}
             >
               =
             </button>
