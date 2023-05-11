@@ -137,6 +137,13 @@ export default function Calculator() {
           setFirstView(result.toString());
         }
         break;
+      case "1/x":
+        if (firstView !== "0") {
+          let result = 1 / parseFloat(firstView);
+          setSecondView(`1/(${firstView})`);
+          setFirstView(result.toString());
+        }
+        break;
       case "=":
         if (secondView !== "" && firstView !== "") {
           let tempOperator = "";
@@ -229,7 +236,12 @@ export default function Calculator() {
             </button>
           </div>
           <div className="row my-1 mx-1 justify-content-evenly fs-5">
-            <button className="col-2 rounded btnCalculator">1 / x</button>
+            <button
+              className="col-2 rounded btnCalculator"
+              onClick={() => handleOperatorClick("1/x")}
+            >
+              1 / x
+            </button>
             <button className="col-2 rounded btnCalculator">
               x<sup>2</sup>
             </button>
