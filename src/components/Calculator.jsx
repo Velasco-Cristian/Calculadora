@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { evaluate } from "mathjs";
 
 export default function Calculator() {
@@ -186,7 +186,6 @@ export default function Calculator() {
               `${Number(secondValue)} ${tempOperator} ${Number(firstView)}`
             );
 
-            // Verificar si el último carácter de secondView ya es un igual
             if (secondView.slice(-1) === "=") {
               setSecondView(`${result} ${tempOperator}`);
             } else {

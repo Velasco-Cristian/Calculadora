@@ -13,7 +13,7 @@ function App() {
         <article className="row flex-column-reverse flex-lg-row d-flex justify-content-center">
           <section className="col-lg-5 col-10 mx-auto text-bg-dark rounded-4 rounded-bottom aboutText">
             <img
-              src="/public/using-a-calculator.jpg"
+              src="/using-a-calculator.jpg"
               className="img-fluid pt-4 pb-2 d-none d-lg-block px-xl-4 image"
               alt="Using a calculator"
             />
