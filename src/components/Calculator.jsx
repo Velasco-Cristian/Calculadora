@@ -8,7 +8,11 @@ export default function Calculator() {
   const [operatorPressed, setOperatorPressed] = useState(false);
 
   const formatNumber = (number) => {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    if (Number.isInteger(number)) {
+      return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    } else {
+      return number.toLocaleString("en-US");
+    }
   };
 
   const handleNumberClick = (e) => {
@@ -17,13 +21,17 @@ export default function Calculator() {
       setFirstView(number);
       setOperatorPressed(false);
     } else {
-      setFirstView(firstView === "0" ? number : firstView + number);
+      setFirstView(
+        firstView === "0"
+          ? formatNumber(number)
+          : formatNumber(firstView + number)
+      );
     }
   };
 
   const handleDecimalClick = () => {
     if (!firstView.includes(".")) {
-      setFirstView(firstView + ".");
+      setFirstView(formatNumber(firstView + "."));
     }
   };
 
@@ -62,11 +70,11 @@ export default function Calculator() {
             let result = evaluate(
               `${secondValue} ${tempOperator} ${firstView}`
             );
-            setSecondView(`${result} +`);
+            setSecondView(`${formatNumber(result)} +`);
             setSecondValue(result);
-            setFirstView(result.toString());
+            setFirstView(formatNumber(result.toString()));
           } else {
-            setSecondView(`${firstView} +`);
+            setSecondView(`${formatNumber(firstView)} +`);
             setSecondValue(parseFloat(firstView));
           }
         }
@@ -79,11 +87,11 @@ export default function Calculator() {
           }
           if (secondView !== "") {
             let result = eval(`${secondValue} ${tempOperator} ${firstView}`);
-            setSecondView(`${result} -`);
             setSecondValue(result);
-            setFirstView(result.toString());
+            setSecondView(`${formatNumber(result)} -`);
+            setFirstView(formatNumber(result.toString()));
           } else {
-            setSecondView(`${firstView} -`);
+            setSecondView(`${formatNumber(firstView)} -`);
             setSecondValue(parseFloat(firstView));
           }
         }
@@ -119,7 +127,7 @@ export default function Calculator() {
             let result = evaluate(
               `${secondValue} ${tempOperator} ${firstView}`
             );
-            setSecondView(`${result} /`);
+            setSecondView(`${formatNumber(result)} /`);
             setSecondValue(result);
           } else {
             if (operatorPressed && secondView.slice(-1) === "/") {
@@ -140,8 +148,8 @@ export default function Calculator() {
       case "1/x":
         if (firstView !== "0") {
           let result = 1 / parseFloat(firstView);
-          setSecondView(`1/(${firstView})`);
-          setFirstView(result.toString());
+          setSecondView(`1/(${formatNumber(firstView)})`);
+          setFirstView(formatNumber(result.toString()));
         }
         break;
       case "=":
@@ -171,7 +179,8 @@ export default function Calculator() {
               setSecondView(`${secondView} ${firstView} =`);
             }
 
-            setFirstView(result.toString());
+            setSecondView(`${formatNumber(result)} ${tempOperator}`);
+            setFirstView(formatNumber(result.toString()));
             setSecondValue(0);
             setOperatorPressed(false);
           }
