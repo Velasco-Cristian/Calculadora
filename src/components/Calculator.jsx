@@ -152,6 +152,13 @@ export default function Calculator() {
           setFirstView(formatNumber(result.toString()));
         }
         break;
+      case "√":
+        if (firstView !== "0") {
+          let result = Math.sqrt(parseFloat(firstView));
+          setSecondView(`√(${formatNumber(firstView)})`);
+          setFirstView(formatNumber(result.toString()));
+        }
+        break;
       case "1/x":
         if (firstView !== "0") {
           let result = 1 / parseFloat(firstView);
@@ -264,7 +271,12 @@ export default function Calculator() {
             >
               x<sup>2</sup>
             </button>
-            <button className="col-2 rounded btnCalculator">√x</button>
+            <button
+              className="col-2 rounded btnCalculator"
+              onClick={() => handleOperatorClick("√")}
+            >
+              √x
+            </button>
             <button
               className="col-2 rounded btnCalculator fs-2"
               onClick={() => handleOperatorClick("/")}
